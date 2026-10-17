@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gh-discoverability"
+version = "0.1.0"
+description = "Why nobody finds your repo: audit GitHub search surface, trending-bucket odds, and skill-registry ranking. No LLM, no guessing."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "David Wei" }]
+keywords = ["github", "seo", "discoverability", "trending", "open-source", "growth"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.scripts]
+discover = "discover.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["discover*"]
