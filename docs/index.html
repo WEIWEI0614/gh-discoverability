@@ -1,14 +1,17 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discoverability — WEIWEI0614/cn-job-radar</title>
+<title>可发现性审计 — WEIWEI0614/cn-job-radar</title>
 <style>
 :root{--bg:#16171a;--panel:#1e1f24;--line:#33353c;--tx:#e8e6e2;--tx2:#a8a7a3;--amber:#ef9f27;--teal:#5dcaa5}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px}
+.wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px;position:relative}
+.lang{position:absolute;top:42px;right:22px;font-size:12.5px;color:var(--tx2);text-decoration:none;border:0.5px solid var(--line);border-radius:99px;padding:3px 12px}
+.lang:hover{color:var(--tx);border-color:var(--tx2)}
 h1{font-size:19px;font-weight:600;margin:0 0 4px}
 h2{font-size:15px;font-weight:600;margin:34px 0 12px;color:var(--tx2)}
 code{background:#25272d;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.repo{color:var(--tx2);margin:0}
 .hero{display:flex;align-items:baseline;gap:14px;margin:18px 0 26px}
 .score{font-size:52px;font-weight:600;line-height:1;color:var(--amber)}
 .score small{font-size:16px;color:var(--tx2);font-weight:400}
@@ -28,17 +31,10 @@ code{background:#25272d;padding:1px 5px;border-radius:4px;font-size:12.5px}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{text-align:left;padding:7px 10px;border-bottom:0.5px solid var(--line)}
 th{color:var(--tx2);font-weight:500;font-size:12px}
+td.ok{color:var(--teal);font-weight:500}
 .note{color:var(--tx2);font-size:12px;margin-top:10px}
 footer{margin-top:46px;color:#7a7975;font-size:12px}
 </style></head><body><div class="wrap">
-<h1>Discoverability audit</h1>
-<p style="color:var(--tx2);margin:0"><code>WEIWEI0614/cn-job-radar</code></p>
-<div class="hero"><div class="score">79.8<small>/100</small></div>
-<span class="grade">grade B</span></div>
-<h2>Dimensions</h2>
-<div class="dim"><div class="dl"><span>可搜索面</span><b>30<span class="w">/30</span></b></div><div class="track"><i style="width:100%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>话题布局</span><b>15<span class="w">/20</span></b></div><div class="track"><i style="width:75%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>入桶信号</span><b>15<span class="w">/20</span></b></div><div class="track"><i style="width:75%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>转化面</span><b>15<span class="w">/15</span></b></div><div class="track"><i style="width:100%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>查询命中</span><b>4.8<span class="w">/15</span></b></div><div class="track"><i style="width:32%;background:#e26d6b"></i></div></div>
-<h2>What to fix, by recoverable points</h2>
-<div class="fix"><div class="fh"><span class="n">1</span><span class="t">查询命中</span><span class="p">+10.2</span></div><ul><li>`job scraper` 前 60 名之外（候选集可能上千，0 star 进不去）</li><li>`ats scraper` 前 60 名之外（候选集可能上千，0 star 进不去）</li></ul></div><div class="fix"><div class="fh"><span class="n">2</span><span class="t">入桶信号</span><span class="p">+5</span></div><ul><li>默认 README 是纯英文（中文占比 1.1%）—— 只作弱信号，但补上零成本</li></ul></div>
-<h2>Live trending floors</h2><table><thead><tr><th>bucket</th><th>min</th><th>median</th><th>max</th></tr></thead><tbody><tr><td>global</td><td>36</td><td>898</td><td>2301</td></tr><tr><td>python</td><td>32</td><td>308</td><td>2301</td></tr><tr><td>zh</td><td>2</td><td>16</td><td>75</td></tr></tbody></table><p class="note">GitHub publishes no trending formula. These numbers are measured from the live page and drift daily — re-run <code>discover trending</code>.</p>
-<footer>gh-discoverability · rules trace to measured behaviour, see references/</footer>
+<a class="lang" href="en.html">English</a><h1>可发现性审计</h1><p class="repo"><code>WEIWEI0614/cn-job-radar</code></p><div class="hero"><div class="score">79.8<small>/100</small></div><span class="grade">等级 B</span></div><h2>五个维度</h2><div class="dim"><div class="dl"><span>可搜索面</span><b>30<span class="w">/30</span></b></div><div class="track"><i style="width:100%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>话题布局</span><b>15<span class="w">/20</span></b></div><div class="track"><i style="width:75%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>入桶信号</span><b>15<span class="w">/20</span></b></div><div class="track"><i style="width:75%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>转化面</span><b>15<span class="w">/15</span></b></div><div class="track"><i style="width:100%;background:#5dcaa5"></i></div></div><div class="dim"><div class="dl"><span>查询命中</span><b>4.8<span class="w">/15</span></b></div><div class="track"><i style="width:32%;background:#e26d6b"></i></div></div><h2>按可回收分数排序的修改项</h2><div class="fix"><div class="fh"><span class="n">1</span><span class="t">查询命中</span><span class="p">+10.2</span></div><ul><li>`job scraper` 前 60 名之外（候选集可能上千，0 star 进不去）</li><li>`ats scraper` 前 60 名之外（候选集可能上千，0 star 进不去）</li></ul></div><div class="fix"><div class="fh"><span class="n">2</span><span class="t">入桶信号</span><span class="p">+5</span></div><ul><li>默认 README 是纯英文（中文占比 1.1%）—— 只作弱信号，但补上零成本</li></ul></div><h2>查询词与位次</h2><table><thead><tr><th>查询词</th><th>位次</th></tr></thead><tbody><tr><td><code>job scraper</code></td><td>未进前 60</td></tr><tr><td><code>chinese job market</code></td><td>41</td></tr><tr><td><code>ats scraper</code></td><td>未进前 60</td></tr><tr><td><code>feishu hire scraper</code></td><td class="ok">1</td></tr><tr><td><code>求职雷达</code></td><td>38</td></tr></tbody></table><p class="note">词命中决定能否进候选集，star 数量决定在候选集里排第几。</p><h2>实时热榜门槛</h2><table><thead><tr><th>分桶</th><th>最低</th><th>中位数</th><th>最高</th></tr></thead><tbody><tr><td>global</td><td>36</td><td>898</td><td>2301</td></tr><tr><td>python</td><td>32</td><td>308</td><td>2301</td></tr><tr><td>zh</td><td>2</td><td>16</td><td>75</td></tr></tbody></table><p class="note">GitHub 不公开热榜公式。这些数字从实时页面测出，每天都在变 —— 重跑 <code>discover trending</code> 再下结论。</p>
+<footer>gh-discoverability · 每条规则都对应实测，依据见 references/</footer>
 </div></body></html>

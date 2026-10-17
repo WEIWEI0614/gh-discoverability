@@ -52,6 +52,7 @@ def cmd_audit(a) -> int:
     result = rules.audit(
         repo, queries=queries, ranks=ranks, topic_counts=topic_counts,
         readme_cjk=readme_cjk, has_demo=has_demo, profile_location=a.profile,
+        lang=a.lang, limit=a.limit,
     )
     result["queries"] = queries
     result["ranks"] = ranks
@@ -60,17 +61,39 @@ def cmd_audit(a) -> int:
     if a.json:
         print(report.to_json(result))
     else:
-        print(report.terminal(result))
+        print(report.terminal(result, a.lang))
 
     if a.md:
-        Path(a.md).write_text(report.markdown(result), encoding="utf-8")
+        Path(a.md).write_text(report.markdown(result, a.lang), encoding="utf-8")
         print(f"  markdown -> {a.md}")
+
+    tb = trending.measure(["global", "python", "zh"]) if (a.html or a.site) and a.with_trending else None
+
     if a.html:
-        tb = None
-        if a.with_trending:
-            tb = trending.measure(["global", "python", "zh"])
-        Path(a.html).write_text(report.html_report(result, tb), encoding="utf-8")
+        alt = "en" if a.lang == "zh" else "zh"
+        Path(a.html).write_text(
+            report.html_report(result, tb, lang=a.lang,
+                               alt_href=a.alt_href, alt_label=a.alt_label or ("English" if alt == "en" else "中文")),
+            encoding="utf-8")
         print(f"  html     -> {a.html}")
+
+    if a.site:
+        d = Path(a.site)
+        d.mkdir(parents=True, exist_ok=True)
+        other = dict(result)
+        other.update(rules.audit(
+            repo, queries=queries, ranks=ranks, topic_counts=topic_counts,
+            readme_cjk=readme_cjk, has_demo=has_demo, profile_location=a.profile,
+            lang="en" if a.lang == "zh" else "zh", limit=a.limit))
+        other["queries"], other["ranks"] = queries, ranks
+        zh, en = (result, other) if a.lang == "zh" else (other, result)
+        (d / "index.html").write_text(
+            report.html_report(zh, tb, lang="zh", alt_href="en.html", alt_label="English"),
+            encoding="utf-8")
+        (d / "en.html").write_text(
+            report.html_report(en, tb, lang="en", alt_href="index.html", alt_label="中文"),
+            encoding="utf-8")
+        print(f"  site     -> {d}/index.html (zh) + {d}/en.html (en)")
     return 0
 
 
@@ -164,9 +187,14 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--no-queries", action="store_true", help="skip the search-rank probes")
     a.add_argument("--no-readme", action="store_true", help="skip the README language probe")
     a.add_argument("--with-trending", action="store_true", help="embed live trending floors in the HTML")
+    a.add_argument("--lang", default="zh", choices=["zh", "en"], help="report language (default: zh)")
+    a.add_argument("--limit", type=int, default=60, help="how many search results to scan per phrase")
     a.add_argument("--json", action="store_true")
     a.add_argument("--md", help="write a markdown report here")
-    a.add_argument("--html", help="write a standalone dark HTML report here")
+    a.add_argument("--html", help="write a standalone dark HTML report here (in --lang)")
+    a.add_argument("--alt-href", help="with --html: link to the other-language report")
+    a.add_argument("--alt-label", help="with --html: label for that link")
+    a.add_argument("--site", help="write both languages (index.html + en.html) into this directory")
     a.set_defaults(func=cmd_audit)
 
     t = sub.add_parser("trending", help="measure live star thresholds per bucket")

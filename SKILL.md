@@ -55,6 +55,10 @@ useful fact in this whole skill. Re-measure before every launch plan.
 discover audit <owner/repo> --queries "phrase a;phrase b" --deep --html report.html
 ```
 
+Reports are bilingual — `--lang zh|en` switches every label *and* rule note, and
+`--site <dir>` writes both languages cross-linked in one command. Pick the language the user
+is writing in; do not hand-translate the output.
+
 - `--queries` — the phrases a real user would type. Passing none falls back to topics, which
   is acceptable but weaker.
 - `--deep` — also counts repositories per topic, so the report can flag "all your topics are

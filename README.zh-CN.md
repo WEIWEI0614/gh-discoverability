@@ -12,6 +12,8 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+**在线报告 →** [中文](https://weiwei0614.github.io/gh-discoverability/) · [English](https://weiwei0614.github.io/gh-discoverability/en.html) —— 对 `cn-job-radar` 的真实审计，由工具自己生成。
+
 </div>
 
 ---
@@ -78,6 +80,18 @@ discover skill my-skill --queries "job radar"     # 技能注册表排名体检
    2. [+5.0 分] 入桶信号
         · 默认 README 是纯英文 —— 只作弱信号，但补上零成本
 ```
+
+## 中英双语报告
+
+报告**连同规则提示语**一起双语，不只是标题。
+
+```bash
+discover audit owner/repo --site docs        # docs/index.html（中文）+ docs/en.html（英文）
+discover audit owner/repo --lang en --html report.html
+discover audit owner/repo --lang zh          # 终端输出也跟随 --lang
+```
+
+`--site` 会一次写出两份，各自带角标切换链接，直接就能发 GitHub Pages。
 
 ## 改变打法的那个发现
 
