@@ -12,7 +12,7 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-**在线报告 →** [中文](https://weiwei0614.github.io/gh-discoverability/) · [English](https://weiwei0614.github.io/gh-discoverability/en.html) —— 对 `cn-job-radar` 的真实审计，由工具自己生成。
+**在线报告 →** [中文](https://weiwei0614.github.io/gh-discoverability/) · [English](https://weiwei0614.github.io/gh-discoverability/en.html) —— 对 `build-next` 的真实审计，由工具自己生成。
 
 </div>
 
@@ -59,24 +59,24 @@ pip install gh-discoverability     # 或：pip install -e .
 discover trending --buckets global,python,zh      # 先量当月门槛，再谈任何计划
 discover audit owner/repo --queries "短语A;短语B" --deep --html report.html
 discover queries owner/repo --queries "短语A"      # 你现在到底排第几
-discover topics job-scraper skill-map beisen      # 哪些话题是红海
-discover skill my-skill --queries "job radar"     # 技能注册表排名体检
+discover topics python cli developer-tools      # 哪些话题是红海
+discover skill my-skill --queries "code review"     # 技能注册表排名体检
 ```
 
 样例输出：
 
 ```
-  WEIWEI0614/cn-job-radar  ·  76.8/100  [B]
+  WEIWEI0614/build-next  ·  68.5/100  [C]
 
-  可搜索面      30.0/30  ██████████████████
+  可搜索面      25.5/30  ███████████████···
   话题布局      15.0/20  ██████████████····
   入桶信号      15.0/20  ██████████████····
   转化面       15.0/15  ██████████████████
-  查询命中       1.8/15  ██················
+  查询命中       0.0/15  ··················
 
   按可回收分数排序的修改项：
-   1. [+13.2 分] 查询命中
-        · `job scraper` 前 60 名之外（候选集可能上千，0 star 进不去）
+   1. [+15.0 分] 查询命中
+        · `github-trending` 前 60 名之外（候选集可能上千，0 star 进不去）
    2. [+5.0 分] 入桶信号
         · 默认 README 是纯英文 —— 只作弱信号，但补上零成本
 ```
